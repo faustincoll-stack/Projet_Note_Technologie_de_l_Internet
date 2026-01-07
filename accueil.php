@@ -1,17 +1,13 @@
+<?php
+require 'includes/header.php';
+?>
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LoL Top Lane Helper</title>
-  <!-- Google Fonts : Pour inclure des polices de texte-->
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto&display=swap" rel="stylesheet">
-  <!-- CSS -->
-  <link rel="stylesheet" href="css/style.css">
-</head>
+
+
 <body>
 
-  <!-- HEADER -->
+  <!-- HEADER 
   <header>
     <h1>LoL Top Lane Helper</h1>
     <nav>
@@ -22,7 +18,7 @@
         <li><a href="register.php">Inscription</a></li>
       </ul>
     </nav>
-  </header>
+  </header>-->
 
   <!-- HERO SECTION -->
   <section class="hero">
