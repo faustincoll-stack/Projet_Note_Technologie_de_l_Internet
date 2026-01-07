@@ -59,8 +59,8 @@
     font-family: 'Montserrat', sans-serif;
     font-size: 2.5rem;
     margin-bottom: 20px;
-    color: #e91109; /* vert sombre */
-    text-shadow: 2px 2px 5px #000;
+    color: #e91109e7; /* vert sombre */
+    text-shadow: 2px 2px 5px #1eff0096;
   }
   
   .hero p {

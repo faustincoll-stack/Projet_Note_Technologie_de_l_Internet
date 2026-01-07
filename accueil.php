@@ -16,7 +16,7 @@
     <h1>LoL Top Lane Helper</h1>
     <nav>
       <ul>
-        <li><a href="acceuil.php">Accueil</a></li>
+        <li><a href="accueil.php">Accueil</a></li>
         <li><a href="prep.php">Préparer un Match</a></li>
         <li><a href="login.php">Connexion</a></li>
         <li><a href="register.php">Inscription</a></li>
