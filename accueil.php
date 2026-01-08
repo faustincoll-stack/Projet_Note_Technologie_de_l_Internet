@@ -22,7 +22,7 @@ require 'includes/header.php';
 
   <!-- HERO SECTION -->
   <section class="hero">
-    <h2>Maîtrise la Top Lane comme Warwick</h2>
+    <h1>Maîtrise la Top Lane comme Warwick</h1>
     <p>Prépare tes matchs, connais tes matchups et domine la lane !</p>
     <a href="prep.php">Commencer</a>
   </section>

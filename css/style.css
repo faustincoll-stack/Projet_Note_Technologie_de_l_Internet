@@ -43,45 +43,110 @@
     color: #ff4500; /* rouge sang */
   }
   
-  /* ===== HERO ===== */
-  .hero {
+
+
+/* =========================
+   HERO (BASE - SANS BUG)
+========================= */
+
+.hero {
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+
     text-align: center;
     padding: 60px 20px;
-    background: url('../media/Warwick_1.jpg') center/cover no-repeat;
     min-height: 70vh;
-  }
-  
-  .hero h2 {
+
+    /* Background proprement surchargeable */
+        background-image:
+        linear-gradient(
+            rgba(11, 15, 23, 0.3),
+            rgba(11, 15, 23, 0.3)
+        ),
+        url('../media/img/Warwick_1.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+/* TITRE PRINCIPAL */
+.hero h1 {
     font-family: 'Montserrat', sans-serif;
     font-size: 2.5rem;
     margin-bottom: 20px;
-    color: #e91109e7; /* vert sombre */
+
+    color: #e91109e7;
     text-shadow: 2px 2px 5px #1eff0096;
-  }
-  
-  .hero p {
+}
+
+/* TEXTE */
+.hero p {
     font-size: 1.2rem;
     margin-bottom: 30px;
     text-shadow: 1px 1px 3px #000;
-  }
-  
-  .hero a {
-    background-color: #ff4500; /* rouge sang */
+}
+
+/* BOUTON / LIEN */
+.hero a {
+    background-color: #ff4500;
     color: #0b0f17;
     padding: 12px 25px;
+
     border-radius: 5px;
     text-decoration: none;
     font-weight: bold;
+
     transition: 0.3s;
-  }
-  
-  .hero a:hover {
-    background-color: #e91109; /* rouge foncé */
-  }
+}
+
+.hero a:hover {
+    background-color: #e91109;
+}
+
+/* 
+=========================
+   HERO - PREPARATION PAGE
+========================= */
+
+.hero.hero-prep {
+    background-image:
+        linear-gradient(
+            rgba(11, 15, 23, 0.3),
+            rgba(11, 15, 23, 0.3)
+        ),
+        url('../media/img/Warwick_2.jpg');
+
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    border-bottom: 2px solid #f7fc98;
+}
+
+.hero.hero-prep h1 {
+    color: #f5d76e; /* doré */
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.6);
+}
+
+.hero.hero-prep p {
+    color: #fff2c2;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
+}
+
+.hero.hero-prep .note {
+    color: #f0b7a7;
+    font-size: 0.95rem;
+    margin-top: 15px;
+}
+
+.hero.hero-prep a:hover {
+    background-color: #fff2c2;
+    box-shadow: 0 0 18px rgba(245, 215, 110, 0.7);
+}
+
   
   /* ===== SECTIONS ===== */
   section {
@@ -182,7 +247,7 @@
   max-height: 150px;
   overflow-y: auto;
   background-color: #0d141f;
-  border: 1px solid #71b77a;
+  border: none;
   border-radius: 6px;
   position: absolute;
   width: 200px;
@@ -235,23 +300,35 @@
 }
 
 .champion-selection {
-  text-align: center;
-  margin-bottom: 40px;
+    position: absolute;        /* positionnée par rapport au parent relatif */
+    top: 70%;                  /* distance depuis le haut du hero, ajuste selon besoin */
+    left: 50%;                 /* centre horizontalement */
+    transform: translate(-50%, -50%); /* recentre parfaitement */
+    z-index: 20;               /* au-dessus du hero */
+    width: 90%;                /* largeur responsive */
+    max-width: 500px;          /* largeur max */
 }
 
+/* Formulaire */
 .champion-form {
-  display: inline-block;
-  background-color: #0d141f;
-  padding: 20px 30px;
-  border-radius: 10px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.4);
+    display: flex;
+    flex-direction: row; /* <-- important ! pour que les deux champs soient côte à côte */
+    gap: 20px;           /* espace entre les champs */
+    justify-content: center; 
+    background-color: rgba(13, 20, 31, 0.85); 
+    padding: 20px 25px;
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.6);
+    flex-wrap: wrap;      /* pour mobile, passe en colonne si espace insuffisant */
 }
 
+/* Label */
 .champion-form label {
-  display: block;
-  font-weight: bold;
-  margin-bottom: 10px;
-  color: #71b77a;
+    margin-bottom: 10px;
+    color: #f5d76e;  /* doré */
+    font-weight: bold;
+    text-align: center;
+    font-size: 1.1rem;
 }
 
 .champion-form select {
@@ -286,7 +363,7 @@
 }
 
 .matchup-display h2 {
-  color: #71b77a;
+  color: #c94f3d;
   margin-bottom: 20px;
   text-align: center;
 }
@@ -352,4 +429,70 @@ header nav ul li a {
 
 header nav ul li a:hover {
   color: #b34747;
+}
+
+
+.search-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.search-wrapper input {
+    width: 100%;
+    padding: 12px 40px 12px 12px;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    background-color: #081019;
+    color: #e0e0e0;
+}
+
+.search-wrapper .search-btn {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: transparent;
+    border: none;
+    font-size: 1.2rem;
+    color: #f5d76e; /* jaune doré */
+    cursor: pointer;
+}
+
+.search-wrapper input {
+    width: 100%;
+    padding: 12px 40px 12px 12px; /* espace pour la loupe */
+    border-radius: 5px;
+    border: none;          /* <-- supprime la ligne verte */
+    outline: none;         /* <-- supprime le contour focus par défaut */
+    box-shadow: none;      /* <-- supprime tout effet de shadow par défaut */
+    font-size: 1rem;
+    background-color: #081019; /* fond assorti à ton thème */
+    color: #e0e0e0;            /* texte clair */
+}
+
+.search-wrapper .search-btn:hover {
+    color: #fff2c2;
+}
+
+.dual-search-wrapper {
+    display: flex;
+    gap: 20px; /* espace entre les deux champs */
+    justify-content: center; /* centre les champs */
+    flex-wrap: wrap; /* passe en colonne sur mobile */
+}
+
+/* Limite la largeur des champs */
+.dual-search-wrapper .search-wrapper {
+    width: 100%;
+    max-width: 220px; /* ajuste selon ton design */
+}
+
+.dual-search-wrapper label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #f5d76e; /* doré */
+    text-align: center;
 }
