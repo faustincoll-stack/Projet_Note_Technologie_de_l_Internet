@@ -6,29 +6,46 @@ require 'includes/header.php';
 $connected = isset($_SESSION['username']);
 $username = $connected ? $_SESSION['username'] : null;
 
-/* Champion sélectionné */
+/* Champions sélectionnés */
 $currentChampion = '';
+$currentEnnemie = '';
 
 /* Traitement du formulaire */
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_POST['champion'])) {
-    $currentChampion = trim($_POST['champion']);
-
-    if ($connected) {
-        $stmt = $conn->prepare(
-            "UPDATE users SET favorite_top_champion = ? WHERE username = ?"
-        );
-        $stmt->execute([$currentChampion, $username]);
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (!empty($_POST['champion'])) {
+        $currentChampion = trim($_POST['champion']);
+        if ($connected) {
+            $stmt = $conn->prepare("UPDATE users SET favorite_top_champion = ? WHERE username = ?");
+            $stmt->execute([$currentChampion, $username]);
+        }
     }
+
+    if (!empty($_POST['ennemie'])) {
+        $currentEnnemie = trim($_POST['ennemie']); // <-- bonne variable
+        if ($connected) {
+            $stmt = $conn->prepare("UPDATE users SET last_matchup = ? WHERE username = ?");
+            $stmt->execute([$currentEnnemie, $username]);
+        }
+    }
+
 }
 
 /* Récupération du champion sauvegardé */
 if ($connected && empty($currentChampion)) {
-    $stmt = $conn->prepare(
-        "SELECT favorite_top_champion FROM users WHERE username = ?"
-    );
+    $stmt = $conn->prepare("SELECT favorite_top_champion FROM users WHERE username = ?");
     $stmt->execute([$username]);
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
     $currentChampion = $user['favorite_top_champion'] ?? '';
+}
+
+/* Récupération du champion et matchup sauvegardés */
+if ($connected) {
+    $stmt = $conn->prepare(
+        "SELECT favorite_top_champion, last_Ennemie FROM users WHERE username = ?");
+    $stmt->execute([$username]);
+    $user = $stmt->fetch(PDO::FETCH_ASSOC);
+    $currentChampion = $user['favorite_top_champion'] ?? '';
+    $currentEnnemie = $user['last_Ennemie'] ?? '';
 }
 ?>
 
@@ -47,11 +64,13 @@ if ($connected && empty($currentChampion)) {
     </section>
 
     
+
 <!-- RECHERCHE CHAMPIONS -->
 <section class="champion-selection">
     <form method="POST" action="prep.php" class="champion-form">
 
         <div class="dual-search-wrapper">
+
             <!-- Champion joué -->
             <div class="search-wrapper">
                 <label for="champion-input">Champion joué</label>
@@ -76,18 +95,18 @@ if ($connected && empty($currentChampion)) {
                 <input
                     type="text"
                     id="matchup-input"
-                    name="matchup"
+                    name="ennemie"
                     placeholder="Tapez le champion adverse..."
                     autocomplete="off"
-                    value="<?= htmlspecialchars($currentMatchup) ?>"
+                    value="<?= htmlspecialchars($currentEnnemie) ?>"
                 >
                 <button type="submit" class="search-btn">
                     <i class="fa fa-search"></i>
                 </button>
                 <ul id="matchup-list" class="autocomplete-list"></ul>
             </div>
-        </div>
 
+        </div>
     </form>
 </section>
 
@@ -97,8 +116,10 @@ if ($connected && empty($currentChampion)) {
     <!-- MATCHUPS -->
     <section class="matchup-display">
         <h2>
-            Matchups :
-            <?= $currentChampion ? htmlspecialchars($currentChampion) : '—' ?>
+            Matchups :<br>
+            <?= ($currentChampion || $currentEnnemie) 
+                ? htmlspecialchars($currentChampion) . ' VS ' . htmlspecialchars($currentEnnemie) 
+                : '— VS —' ?>
         </h2>
 
         <div id="matchups" class="matchups-container">
