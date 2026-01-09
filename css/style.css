@@ -12,6 +12,8 @@
     line-height: 1.6;
   }
   
+
+
   /* ===== HEADER ===== */
   header {
     background-color: #0d141f; /* bleu foncé */
@@ -306,7 +308,7 @@
     transform: translate(-50%, -50%); /* recentre parfaitement */
     z-index: 20;               /* au-dessus du hero */
     width: 90%;                /* largeur responsive */
-    max-width: 500px;          /* largeur max */
+    max-width: 750px;          /* largeur max */
 }
 
 /* Formulaire */
@@ -354,12 +356,12 @@
 }
 
 .champion-form button:hover {
-  background-color: #8b3636;
+  background-color: #1720a0;
 }
 
 .matchup-display {
   max-width: 900px;
-  margin: 0 auto 50px;
+  margin: -65px auto 50px;
 }
 
 .matchup-display h2 {
@@ -450,14 +452,22 @@ header nav ul li a:hover {
 
 .search-wrapper .search-btn {
     position: absolute;
-    right: 10px;
-    top: 50%;
+    right: 0px;
+    top: 72%;
     transform: translateY(-50%);
     background: transparent;
     border: none;
     font-size: 1.2rem;
     color: #f5d76e; /* jaune doré */
     cursor: pointer;
+
+        /* AJOUTS POUR AGRANDIR LA ZONE */
+    width: 35px;         /* largeur de la zone cliquable */
+    height: 35px;        /* hauteur de la zone cliquable */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;     
 }
 
 .search-wrapper input {
@@ -476,18 +486,6 @@ header nav ul li a:hover {
     color: #fff2c2;
 }
 
-.dual-search-wrapper {
-    display: flex;
-    gap: 20px; /* espace entre les deux champs */
-    justify-content: center; /* centre les champs */
-    flex-wrap: wrap; /* passe en colonne sur mobile */
-}
-
-/* Limite la largeur des champs */
-.dual-search-wrapper .search-wrapper {
-    width: 100%;
-    max-width: 220px; /* ajuste selon ton design */
-}
 
 .dual-search-wrapper label {
     display: block;
@@ -495,4 +493,24 @@ header nav ul li a:hover {
     font-weight: bold;
     color: #f5d76e; /* doré */
     text-align: center;
+}
+.dual-search-wrapper {
+    display: grid;
+    grid-template-columns: 4fr 4fr; /* 2 colonnes égales */
+    gap: 50px;
+    justify-items: center;
+    width: 100%;
+}
+
+/* Chaque champ */
+.dual-search-wrapper .search-wrapper {
+    width: 100%;
+    max-width: 260px;
+}
+
+/* Responsive mobile */
+@media (max-width: 768px) {
+    .dual-search-wrapper {
+        grid-template-columns: 1fr; /* 1 colonne */
+    }
 }
