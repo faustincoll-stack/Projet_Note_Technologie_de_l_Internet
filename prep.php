@@ -136,13 +136,6 @@ if ($connected) {
     </div>
 </section>
 
-<!-- Div cachée pour passer les valeurs actuelles à JS -->
-<div id="matchup-data"
-     data-champion="<?= htmlspecialchars($currentChampion) ?>"
-     data-matchup="<?= htmlspecialchars($currentEnnemie) ?>"
-     style="display:none;">
-</div>
-
 
 </main>
 
