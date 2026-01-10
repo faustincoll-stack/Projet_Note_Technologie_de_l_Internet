@@ -1,5 +1,5 @@
 <?php
-require 'includes/db.php';
+require 'api/db.php';
 require 'includes/header.php';
 
 /* Vérifie si l'utilisateur est connecté */
@@ -61,6 +61,7 @@ if ($connected) {
                 Mode invité : vos préférences ne seront pas sauvegardées.
             </p>
         <?php endif; ?>
+        <p></p>
     </section>
 
     
@@ -110,9 +111,6 @@ if ($connected) {
     </form>
 </section>
 
-
-
-
     <!-- MATCHUPS -->
     <section class="matchup-display">
         <h2>
@@ -122,16 +120,42 @@ if ($connected) {
                 : '— VS —' ?>
         </h2>
 
-        <div id="matchups" class="matchups-container">
+       <!-- <div id="matchups" class="matchups-container">-->
             <!-- Injecté par JS -->
-        </div>
+       <!-- </div>-->
     </section>
+
+
+    <!-- MATCHUP DISPLAY -->
+<section class="matchup-display">
+
+    <div id="matchups" class="matchups-container">
+        <!-- Chaque section du matchup sera injectée ici par JS -->
+        <!-- Exemple de structure si aucun matchup n'est sélectionné -->
+        <p class="matchup-error">Sélectionnez 2 champions pour voir les détails du matchup.</p>
+    </div>
+</section>
+
+<!-- Div cachée pour passer les valeurs actuelles à JS -->
+<div id="matchup-data"
+     data-champion="<?= htmlspecialchars($currentChampion) ?>"
+     data-matchup="<?= htmlspecialchars($currentEnnemie) ?>"
+     style="display:none;">
+</div>
+
 
 </main>
 
+<!-- Div contenant les données pour JS -->
+<div id="matchup-data"
+     data-champion="<?= htmlspecialchars($currentChampion) ?>"
+     data-matchup="<?= htmlspecialchars($currentEnnemie) ?>"
+     style="display:none;">
+</div>
+
+
 
 <!-- SCRIPTS (TOUJOURS À LA FIN) -->
-<script src="js/topMatchups.js"></script>
 <script src="js/matchup.js"></script>
 <script src="js/championAutocomplete.js"></script>
 

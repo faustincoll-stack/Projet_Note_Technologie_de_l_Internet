@@ -1,6 +1,6 @@
 <?php
 session_start();
-require 'includes/db.php';
+require 'api/db.php';
 require 'includes/header.php';
 
 // Si l'utilisateur est déjà connecté, redirige vers le dashboard

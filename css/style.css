@@ -361,7 +361,7 @@
 
 .matchup-display {
   max-width: 900px;
-  margin: -65px auto 50px;
+  margin: -65px auto -50px;
 }
 
 .matchup-display h2 {
@@ -374,6 +374,7 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 20px;
+
 }
 
 .matchup {
@@ -396,6 +397,37 @@
 .matchup p {
   font-size: 0.9rem;
   color: #c5c5c5;
+}
+
+.matchup-details {
+    margin-top: 30px;
+    display: grid;
+    gap: 20px;
+}
+
+.matchup-card {
+    background: rgba(13, 20, 31, 0.95);
+    padding: 20px;
+    border-radius: 12px;
+    border-left: 4px solid #f5d76e;
+}
+
+.matchup-card h3 {
+    margin-bottom: 10px;
+    color: #f5d76e;
+}
+
+.matchup-card ul {
+    padding-left: 20px;
+}
+
+.matchup-card li {
+    margin-bottom: 6px;
+}
+
+.matchup-card.summary {
+    background: linear-gradient(135deg, #1a1f2b, #0d141f);
+    border-left-color: #71b77a;
 }
 
 
@@ -513,4 +545,14 @@ header nav ul li a:hover {
     .dual-search-wrapper {
         grid-template-columns: 1fr; /* 1 colonne */
     }
+}
+
+.matchup-error {
+    color: #e53935;              /* Rouge lisible */
+    text-align: center;          /* Centré */
+    font-size: 1.1rem;           /* Un peu plus gros */
+    font-weight: 600;            /* Semi-gras */
+
+    margin-top: -20px;     /* monte le texte */
+    margin-bottom: 20px;
 }
