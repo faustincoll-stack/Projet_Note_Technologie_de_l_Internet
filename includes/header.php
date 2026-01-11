@@ -1,6 +1,10 @@
 <?php
-session_start(); // Toujours démarrer la session ici
+// Démarrer la session ici si elle ne l'est pas ailleur
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 ?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -17,8 +21,7 @@ session_start(); // Toujours démarrer la session ici
     <!-- CSS Global -->
     <link rel="stylesheet" href="css/style.css">
 
-    <!-- CSS par device (optionnel) -->
-    <link rel="stylesheet" href="css/desktop.css" media="screen and (min-width: 1024px)">
+    <!-- CSS par device  -->
     <link rel="stylesheet" href="css/tablet.css" media="screen and (min-width: 768px) and (max-width: 1023px)">
     <link rel="stylesheet" href="css/mobile.css" media="screen and (max-width: 767px)">
 </head>

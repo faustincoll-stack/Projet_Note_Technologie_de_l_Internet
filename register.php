@@ -1,6 +1,9 @@
 <?php
 // register.php
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
 require 'api/db.php'; // connexion PDO ($conn)
 
 // Initialisation des variables

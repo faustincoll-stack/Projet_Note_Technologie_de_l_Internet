@@ -3,26 +3,32 @@ require 'includes/header.php';
 ?>
 <!DOCTYPE html>
 <html lang="fr">
+<?php
+//si la session n'est pas démarer, le faire
 
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+require 'api/db.php';
+
+$favChampion = null;
+
+if (isset($_SESSION['username'])) {
+    $username = $_SESSION['username'];
+    $stmt = $conn->prepare("SELECT favorite_top_champion FROM users WHERE username = ?");
+    $stmt->execute([$username]);
+    $user = $stmt->fetch(PDO::FETCH_ASSOC);
+    $favChampion = $user['favorite_top_champion'] ?? null;
+}
+
+$champ = $favChampion ?: 'Warwick';
+?>
 
 <body>
 
-  <!-- HEADER 
-  <header>
-    <h1>LoL Top Lane Helper</h1>
-    <nav>
-      <ul>
-        <li><a href="accueil.php">Accueil</a></li>
-        <li><a href="prep.php">Préparer un Match</a></li>
-        <li><a href="login.php">Connexion</a></li>
-        <li><a href="register.php">Inscription</a></li>
-      </ul>
-    </nav>
-  </header>-->
-
   <!-- HERO SECTION -->
-  <section class="hero">
-    <h1>Maîtrise la Top Lane comme Warwick</h1>
+  <section class="hero" style="background-image: url('media/img/<?= htmlspecialchars($champ) ?>_1.jpg');">
+    <h1>Maîtrise la Top Lane avec <?= htmlspecialchars($champ) ?> !</h1>
     <p>Prépare tes matchs, connais tes matchups et domine la lane !</p>
     <a href="prep.php">Commencer</a>
   </section>
@@ -32,17 +38,14 @@ require 'includes/header.php';
     <h3>Fonctionnalités</h3>
     <div class="features">
       <div class="feature-card">
-        <img src="media/champion-icon.png" alt="Sélecteur champion">
         <h4>Sélecteur de champion</h4>
         <p>Choisis ton champion Top et découvre ses forces et faiblesses contre tes adversaires.</p>
       </div>
       <div class="feature-card">
-        <img src="media/matchup-icon.png" alt="Matchups Top Lane">
         <h4>Matchups Top Lane</h4>
         <p>Affiche la difficulté des lanes et reçois des conseils stratégiques adaptés.</p>
       </div>
       <div class="feature-card">
-        <img src="media/dashboard-icon.png" alt="Dashboard personnalisé">
         <h4>Dashboard personnalisé</h4>
         <p>Suis tes champions favoris et retrouve tes derniers matchups préparés.</p>
       </div>
@@ -50,13 +53,9 @@ require 'includes/header.php';
 
     <!-- AUDIO & VIDEO -->
     <div class="media">
-      <audio controls>
-        <source src="media/focus.mp3" type="audio/mpeg">
-        Votre navigateur ne supporte pas l'audio.
-      </audio>
 
       <video controls>
-        <source src="media/guide.mp4" type="video/mp4">
+        <source src="media/video/TOUT SAVOIR EN TOPLANE EN SEULEMENT 15 MINUTES! Ok un peu plus.mp4" type="video/mp4">
         Votre navigateur ne supporte pas la vidéo.
       </video>
     </div>
@@ -64,7 +63,7 @@ require 'includes/header.php';
 
   <!-- FOOTER -->
   <footer>
-    &copy; 2026 LoL Top Lane Helper | <a href="#">Mentions légales</a> | <a href="#">Contact</a>
+    &copy; 2026 LoL Top Lane Helper | <a href="legal.html">Mentions légales</a> | <a href="moi.html">Contact</a>
   </footer>
 
 </body>

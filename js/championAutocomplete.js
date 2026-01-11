@@ -1,40 +1,81 @@
 document.addEventListener("DOMContentLoaded", () => {
 
     const champions = [
-        "Aatrox", "Ahri", "Akali", "Camille", "Darius", "Fiora",
-        "Garen", "Irelia", "Jax", "Kennen", "Malphite",
-        "Nasus", "Ornn", "Renekton", "Riven",
-        "Sett", "Shen", "Teemo", "Warwick", "Yone"
-        // 👉 ajoute toute ta liste ici
+        "Aatrox","Akali","Camille","Darius","Fiora","Garen","Gnar",
+        "Irelia","Jax","Jayce","Kennen","Malphite","Nasus","Ornn",
+        "Renekton","Riven","Sett","Shen","Teemo","Warwick",
+        "Yone","Yorick"
     ];
 
     function setupAutocomplete(inputId, listId) {
         const input = document.getElementById(inputId);
         const list = document.getElementById(listId);
+
+        if (!input || !list) return; // 🔒 sécurité si champ absent
+
         const form = input.closest("form");
+
         let currentIndex = -1;
+        let currentResults = [];
 
-        if (!input || !list) return;
+        /* =========================
+           CLAVIER
+        ========================= */
+        input.addEventListener("keydown", (e) => {
 
-        /* ====== INPUT ====== */
+            if (e.key === "Enter") {
+                e.preventDefault();
+
+                // Champion sélectionné
+                if (currentIndex >= 0 && currentResults[currentIndex]) {
+                    input.value = currentResults[currentIndex];
+                }
+                // Sinon premier résultat
+                else if (currentResults.length > 0) {
+                    input.value = currentResults[0];
+                }
+                // Aucun résultat → on bloque
+                else {
+                    return;
+                }
+
+                resetList();
+                form.submit();
+            }
+
+            if (e.key === "ArrowDown") {
+                e.preventDefault();
+                currentIndex = Math.min(currentIndex + 1, currentResults.length - 1);
+                updateActive();
+            }
+
+            if (e.key === "ArrowUp") {
+                e.preventDefault();
+                currentIndex = Math.max(currentIndex - 1, 0);
+                updateActive();
+            }
+        });
+
+        /* =========================
+           FILTRAGE
+        ========================= */
         input.addEventListener("input", () => {
             const value = input.value.toLowerCase();
-            list.innerHTML = "";
-            currentIndex = -1;
+            resetList();
 
             if (!value) return;
 
-            const filtered = champions.filter(champ =>
+            currentResults = champions.filter(champ =>
                 champ.toLowerCase().startsWith(value)
             );
 
-            filtered.forEach(champ => {
+            currentResults.forEach((champ, index) => {
                 const li = document.createElement("li");
                 li.textContent = champ;
 
                 li.addEventListener("click", () => {
                     input.value = champ;
-                    list.innerHTML = "";
+                    resetList();
                     form.submit();
                 });
 
@@ -42,46 +83,46 @@ document.addEventListener("DOMContentLoaded", () => {
             });
         });
 
-        /* ====== CLAVIER ====== */
-        input.addEventListener("keydown", e => {
+        /* =========================
+           HELPERS
+        ========================= */
+        function updateActive() {
             const items = list.querySelectorAll("li");
+            items.forEach(item => item.classList.remove("active"));
 
-            if (!items.length) return;
-
-            if (e.key === "ArrowDown") {
-                e.preventDefault();
-                currentIndex = (currentIndex + 1) % items.length;
+            if (items[currentIndex]) {
+                items[currentIndex].classList.add("active");
             }
+        }
 
-            if (e.key === "ArrowUp") {
-                e.preventDefault();
-                currentIndex = (currentIndex - 1 + items.length) % items.length;
-            }
+        function resetList() {
+            list.innerHTML = "";
+            currentIndex = -1;
+            currentResults = [];
+        }
 
-            if (e.key === "Enter") {
-                if (currentIndex >= 0) {
-                    e.preventDefault();
-                    input.value = items[currentIndex].textContent;
-                    list.innerHTML = "";
-                    form.submit();
+        /* =========================
+           SÉCURITÉ FINALE
+        ========================= */
+        input.addEventListener("blur", () => {
+            setTimeout(() => {
+                if (!champions.includes(input.value)) {
+                    input.value = "";
                 }
-            }
-
-            items.forEach((item, index) => {
-                item.classList.toggle("active", index === currentIndex);
-            });
-        });
-
-        /* ====== CLICK OUTSIDE ====== */
-        document.addEventListener("click", e => {
-            if (!input.contains(e.target) && !list.contains(e.target)) {
-                list.innerHTML = "";
-            }
+                resetList();
+            }, 150);
         });
     }
 
-    /* ====== INITIALISATION ====== */
+    /* =========================
+       PREP.PHP
+    ========================= */
     setupAutocomplete("champion-input", "champion-list");
     setupAutocomplete("matchup-input", "matchup-list");
+
+    /* =========================
+       DASHBOARD.PHP
+    ========================= */
+    setupAutocomplete("favorite-champion-input", "favorite-champion-list");
 
 });

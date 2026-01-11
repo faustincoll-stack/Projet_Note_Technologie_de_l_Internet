@@ -13,7 +13,6 @@
   }
   
 
-
   /* ===== HEADER ===== */
   header {
     background-color: #0d141f; /* bleu foncé */
@@ -48,7 +47,7 @@
 
 
 /* =========================
-   HERO (BASE - SANS BUG)
+          HERO 
 ========================= */
 
 .hero {
@@ -60,17 +59,11 @@
 
     text-align: center;
     padding: 60px 20px;
-    min-height: 70vh;
+    min-height: 90vh; /* Augmenté pour que l'image descende plus bas */
 
-    /* Background proprement surchargeable */
-        background-image:
-        linear-gradient(
-            rgba(11, 15, 23, 0.3),
-            rgba(11, 15, 23, 0.3)
-        ),
-        url('../media/img/Warwick_1.jpg');
-    background-position: center;
-    background-size: cover;
+    /* Gestion de l'image de fond */
+    background-size: cover;      /* L'image couvre toute la section */
+    background-position: center; /* Centre l'image */
     background-repeat: no-repeat;
 }
 
@@ -78,18 +71,20 @@
 .hero h1 {
     font-family: 'Montserrat', sans-serif;
     font-size: 2.5rem;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 
-    color: #e91109e7;
-    text-shadow: 2px 2px 5px #1eff0096;
+    color: #d12323;
+    text-shadow: 2px 2px 5px #c2aeae;
 }
 
-/* TEXTE */
-.hero p {
-    font-size: 1.2rem;
-    margin-bottom: 30px;
-    text-shadow: 1px 1px 3px #000;
+
+.hero p, .note {
+  color: #c5c5c5;
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+  text-shadow: 1px 1px 3px #000;
 }
+
 
 /* BOUTON / LIEN */
 .hero a {
@@ -114,28 +109,23 @@
 ========================= */
 
 .hero.hero-prep {
-    background-image:
-        linear-gradient(
-            rgba(11, 15, 23, 0.3),
-            rgba(11, 15, 23, 0.3)
-        ),
-        url('../media/img/Warwick_2.jpg');
-
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
 
-    border-bottom: 2px solid #f7fc98;
+    min-height: 90vh; /* pour que l'image descende plus bas */
 }
 
 .hero.hero-prep h1 {
-    color: #f5d76e; /* doré */
-    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.6);
+  margin-top: -200px;
+  color: #f5d76e; /* doré */
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.6);
 }
 
 .hero.hero-prep p {
-    color: #fff2c2;
-    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
+  margin-top: -20px;
+  color: #fff2c2;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
 }
 
 .hero.hero-prep .note {
@@ -208,35 +198,6 @@
     border-radius: 10px;
   }
   
-  /* ===== FOOTER ===== */
-  footer {
-    background-color: #0d141f; /* bleu foncé */
-    padding: 20px;
-    text-align: center;
-    margin-top: 50px;
-    font-size: 0.9rem;
-    color: #aaa;
-  }
-  
-  footer a {
-    color: #3cb371; /* vert sombre */
-    text-decoration: none;
-  }
-  
-  footer a:hover {
-    text-decoration: underline;
-  }
-  
-  /* ===== RESPONSIVE ===== */
-  @media (max-width: 768px) {
-    .hero h2 {
-      font-size: 2rem;
-    }
-    .hero p {
-      font-size: 1rem;
-    }
-  }
-  
 
 /* ===========================
    Prep.php Styles - Warwick Theme
@@ -285,15 +246,6 @@
   box-shadow: 0 0 20px rgba(0,0,0,0.5);
 }
 
-.hero h1 {
-  color: #71b77a; /* vert Warwick */
-  font-size: 2.5rem;
-  margin-bottom: 10px;
-}
-
-.hero p, .note {
-  color: #c5c5c5;
-}
 
 .note {
   font-style: italic;
@@ -301,14 +253,14 @@
   margin-top: 10px;
 }
 
-.champion-selection {
-    position: absolute;        /* positionnée par rapport au parent relatif */
-    top: 70%;                  /* distance depuis le haut du hero, ajuste selon besoin */
-    left: 50%;                 /* centre horizontalement */
-    transform: translate(-50%, -50%); /* recentre parfaitement */
-    z-index: 20;               /* au-dessus du hero */
-    width: 90%;                /* largeur responsive */
-    max-width: 750px;          /* largeur max */
+.champion-selection {   
+    position: absolute;                /* positionnée par rapport au parent relatif */
+    top: 90%;                          /* distance depuis le haut du hero, ajuste selon besoin */
+    left: 50%;                         /* centre horizontalement */
+    transform: translate(-50%, -50%);  /* recentre parfaitement */
+    z-index: 20;                       /* au-dessus du hero */
+    width: 90%;                        /* largeur responsive */
+    max-width: 750px;                  /* largeur max */
 }
 
 /* Formulaire */
@@ -540,13 +492,6 @@ header nav ul li a:hover {
     max-width: 260px;
 }
 
-/* Responsive mobile */
-@media (max-width: 768px) {
-    .dual-search-wrapper {
-        grid-template-columns: 1fr; /* 1 colonne */
-    }
-}
-
 .matchup-error {
     color: #e53935;              /* Rouge lisible */
     text-align: center;          /* Centré */
@@ -560,4 +505,56 @@ header nav ul li a:hover {
 .autocomplete-list li.active {
     background-color: #333;
     color: white;
+}
+
+
+/*test pour l'instant (barre de recherche)*/
+
+.dashboard-card.center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.search-wrapper.small {
+    width: 320px;
+    position: relative;
+}
+
+.autocomplete-list {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: #111;
+    border: 1px solid #333;
+    z-index: 100;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.autocomplete-list li {
+    padding: 8px;
+    cursor: pointer;
+}
+
+.autocomplete-list li.active,
+.autocomplete-list li:hover {
+    background: #444;
+}
+
+.hero.dashboard-hero {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 80px 20px;
+    min-height: 90vh;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: #fff;
+    text-shadow: 0 2px 6px rgba(0,0,0,0.6);
 }

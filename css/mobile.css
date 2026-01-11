@@ -1,0 +1,40 @@
+/* ===== MOBILE STYLES (max-width: 767px) ===== */
+
+/* ===== RESPONSIVE ===== */
+.hero h2 {
+  font-size: 2rem;
+}
+
+.hero p {
+  font-size: 1rem;
+}
+
+/* Features en colonne sur mobile */
+.features {
+    grid-template-columns: 1fr; /* 1 seule colonne */
+}
+
+/* Header en colonne sur mobile (titre au-dessus du menu) */
+header {
+    flex-direction: column; /* passage en colonne */
+    gap: 15px;              /* espacement entre titre et menu */
+}
+
+
+/* Zone de recherche fixe et centrée sur tablette */
+.champion-selection {
+    max-width: 450px;  /* largeur fixe de la zone globale */
+    left: 50%;
+    transform: translateX(-50%); /* centre horizontalement */
+    top: 60%; /* remonte les barres de recherche*/
+}
+
+/* Barres de recherche en colonne sur tablette */
+.dual-search-wrapper {
+    grid-template-columns: 1fr; /* 1 colonne */
+}
+
+.dual-search-wrapper .search-wrapper {
+    max-width: 100%; /* prend toute la largeur de .champion-selection */
+    margin: 0 auto;  /* centre chaque barre */
+}

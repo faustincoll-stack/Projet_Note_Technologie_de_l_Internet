@@ -1,4 +1,9 @@
 <?php
+// Si la session n'est pas démarrée, le faire
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
 require 'api/db.php';
 require 'includes/header.php';
 
@@ -6,16 +11,28 @@ require 'includes/header.php';
 $connected = isset($_SESSION['username']);
 $username = $connected ? $_SESSION['username'] : null;
 
-/* Champions sélectionnés */
+/* Variables */
 $currentChampion = '';
 $currentEnnemie = '';
+$favChampion = null;
+
+/* Récupération de l'utilisateur connecté */
+if ($connected) {
+    $stmt = $conn->prepare("SELECT favorite_top_champion, last_play, last_Ennemie FROM users WHERE username = ?");
+    $stmt->execute([$username]);
+    $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    $favChampion = $user['favorite_top_champion'] ?? null;
+    $currentChampion = $user['last_play'] ?? '';
+    $currentEnnemie = $user['last_Ennemie'] ?? '';
+}
 
 /* Traitement du formulaire */
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (!empty($_POST['champion'])) {
         $currentChampion = trim($_POST['champion']);
         if ($connected) {
-            $stmt = $conn->prepare("UPDATE users SET favorite_top_champion = ? WHERE username = ?");
+            $stmt = $conn->prepare("UPDATE users SET last_play = ? WHERE username = ?");
             $stmt->execute([$currentChampion, $username]);
         }
     }
@@ -29,31 +46,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-/* Récupération du champion sauvegardé */
-if ($connected && empty($currentChampion)) {
-    $stmt = $conn->prepare("SELECT favorite_top_champion FROM users WHERE username = ?");
-    $stmt->execute([$username]);
-    $user = $stmt->fetch(PDO::FETCH_ASSOC);
-    $currentChampion = $user['favorite_top_champion'] ?? '';
-}
-
-/* Récupération du champion et matchup sauvegardés */
-if ($connected) {
-    $stmt = $conn->prepare(
-        "SELECT favorite_top_champion, last_Ennemie FROM users WHERE username = ?"
-    );
-    $stmt->execute([$username]);
-    $user = $stmt->fetch(PDO::FETCH_ASSOC);
-
-    $currentChampion = $user['favorite_top_champion'] ?? '';
-    $currentEnnemie = $user['last_Ennemie'] ?? '';
-}
+// 🔹 Définir l'image à partir du champion préféré (dashboard), fallback sur Warwick
+$champ = $favChampion ?: 'Warwick';
 ?>
+
 
 <main class="prep-page">
 
     <!-- TITRE -->
-    <section class="hero hero-prep">
+    <section class="hero hero-prep" style="background-image: url('media/img/<?= htmlspecialchars($champ) ?>_2.jpg');">
         <h1>Préparation Top Lane</h1>
         <p>Recherchez votre champion et préparez vos matchups.</p>
 
@@ -153,4 +154,3 @@ if ($connected) {
 <script src="js/matchup.js"></script>
 <script src="js/championAutocomplete.js"></script>
 
-<?php require 'includes/footer.php'; ?>
