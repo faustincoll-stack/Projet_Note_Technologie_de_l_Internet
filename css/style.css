@@ -182,20 +182,27 @@
     font-size: 1rem;
   }
   
-  /* ===== AUDIO & VIDEO ===== */
-  .media {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    align-items: center;
-    margin-top: 30px;
-  }
+  /* ===== VIDEO ===== */
   
-  audio,
-  video {
+  .video-container {
+    position: relative;
+    padding-bottom: 56.25%; /* ratio 16:9 */
+    height: 0;
+    overflow: hidden;
+    max-width: 100%;
+    border-radius: 12px;      /* arrondis */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3); /* ombre similaire */
+    margin: 20px auto;        /* centrage si nécessaire */
+  }
+
+  .video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
-    max-width: 600px;
-    border-radius: 10px;
+    height: 100%;
+    border: none; /* supprime la bordure de l'iframe */
+    border-radius: 12px; /* pour que l'iframe respecte les coins arrondis */
   }
   
 

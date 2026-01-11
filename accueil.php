@@ -52,12 +52,13 @@ $champ = $favChampion ?: 'Warwick';
     </div>
 
     <!-- AUDIO & VIDEO -->
-    <div class="media">
-
-      <video controls>
-        <source src="media/video/TOUT SAVOIR EN TOPLANE EN SEULEMENT 15 MINUTES! Ok un peu plus.mp4" type="video/mp4">
-        Votre navigateur ne supporte pas la vidéo.
-      </video>
+    <div class="video-container">
+      <iframe 
+          src="https://www.youtube.com/embed/FS1DNNnU9n8" 
+          title="TOUT SAVOIR EN TOPLANE EN 15 MINUTES" 
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+          allowfullscreen>
+      </iframe>
     </div>
   </section>
 
