@@ -21,13 +21,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     if (!empty($_POST['ennemie'])) {
-        $currentEnnemie = trim($_POST['ennemie']); // <-- bonne variable
+        $currentEnnemie = trim($_POST['ennemie']);
         if ($connected) {
-            $stmt = $conn->prepare("UPDATE users SET last_matchup = ? WHERE username = ?");
+            $stmt = $conn->prepare("UPDATE users SET last_Ennemie = ? WHERE username = ?");
             $stmt->execute([$currentEnnemie, $username]);
         }
     }
-
 }
 
 /* Récupération du champion sauvegardé */
@@ -41,9 +40,11 @@ if ($connected && empty($currentChampion)) {
 /* Récupération du champion et matchup sauvegardés */
 if ($connected) {
     $stmt = $conn->prepare(
-        "SELECT favorite_top_champion, last_Ennemie FROM users WHERE username = ?");
+        "SELECT favorite_top_champion, last_Ennemie FROM users WHERE username = ?"
+    );
     $stmt->execute([$username]);
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
     $currentChampion = $user['favorite_top_champion'] ?? '';
     $currentEnnemie = $user['last_Ennemie'] ?? '';
 }
@@ -68,7 +69,7 @@ if ($connected) {
 
 <!-- RECHERCHE CHAMPIONS -->
 <section class="champion-selection">
-    <form method="POST" action="prep.php" class="champion-form">
+    <form method="POST" action="prep.php" class="champion-form" novalidate>
 
         <div class="dual-search-wrapper">
 

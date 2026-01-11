@@ -1,67 +1,123 @@
 <?php
+// login.php
 session_start();
-require 'api/db.php';
-require 'includes/header.php';
+require 'api/db.php'; // connexion PDO ($conn)
 
-// Si l'utilisateur est déjà connecté, redirige vers le dashboard
-if(isset($_SESSION['username'])){
-    header("Location: dashboard.php");
-    exit;
-}
+// Variables
+$login = $password = '';
+$errors = [];
 
-$error = ''; // Message d'erreur
+// Traitement du formulaire
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $login = trim($_POST['login'] ?? ''); // username ou email
+    $password = $_POST['password'] ?? '';
 
-if($_SERVER['REQUEST_METHOD'] === 'POST'){
-    $username = trim($_POST['username']);
-    $password = trim($_POST['password']);
+    if (!$login) $errors[] = "Nom d'utilisateur ou email requis.";
+    if (!$password) $errors[] = "Mot de passe requis.";
 
-    // Vérifie que les champs ne sont pas vides
-    if(empty($username) || empty($password)){
-        $error = "Veuillez remplir tous les champs.";
-    } else {
-        // Cherche l'utilisateur dans la base
-        $stmt = $conn->prepare("SELECT * FROM users WHERE username = ?");
-        $stmt->execute([$username]);
+    if (empty($errors)) {
+        // Recherche l'utilisateur par username ou email
+        $stmt = $conn->prepare("SELECT * FROM users WHERE username = :login OR email = :login");
+        $stmt->execute([':login' => $login]);
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        // Vérifie le mot de passe
-        if($user && password_verify($password, $user['password'])){
-            // Connexion réussie
-            $_SESSION['username'] = $user['username'];
-            header("Location: dashboard.php");
-            exit;
+        if (!$user || !password_verify($password, $user['password'])) {
+            $errors[] = "Nom d'utilisateur/email ou mot de passe incorrect.";
         } else {
-            $error = "Identifiant ou mot de passe incorrect.";
+            // Connexion réussie : créer session
+            $_SESSION['user_id'] = $user['id'];
+            $_SESSION['username'] = $user['username'];
+            header("Location: prep.php"); // redirection vers la page principale
+            exit;
         }
     }
 }
 ?>
 
-<main class="login-page">
-    <section class="hero">
-        <h1>Connexion LoL Top Lane Helper</h1>
-        <p>Connectez-vous pour accéder à vos préférences et dashboards.</p>
-    </section>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Connexion</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f2f2f2;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding-top: 50px;
+        }
+        .login-container {
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            width: 350px;
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        input[type=text], input[type=email], input[type=password] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background: #007BFF;
+            border: none;
+            color: #fff;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        .error {
+            color: #d8000c;
+            background-color: #ffd2d2;
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+        }
+        .success {
+            color: #4F8A10;
+            background-color: #DFF2BF;
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+        }
+        .register-link {
+            display: block;
+            text-align: center;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+<div class="login-container">
+    <h2>Connexion</h2>
 
-    <section class="login-form">
-        <?php if($error): ?>
-            <p class="error"><?= htmlspecialchars($error) ?></p>
-        <?php endif; ?>
+    <?php if (!empty($errors)): ?>
+        <div class="error">
+            <?php foreach ($errors as $err) echo htmlspecialchars($err) . "<br>"; ?>
+        </div>
+    <?php endif; ?>
 
-        <form method="POST" action="login.php">
-            <label for="username">Pseudo :</label>
-            <input type="text" name="username" id="username" placeholder="Entrez votre pseudo" required>
+    <form method="POST" action="login.php">
+        <input type="text" name="login" placeholder="Nom d'utilisateur ou Email" value="<?= htmlspecialchars($login) ?>" required>
+        <input type="password" name="password" placeholder="Mot de passe" required>
+        <button type="submit">Se connecter</button>
+    </form>
 
-            <label for="password">Mot de passe :</label>
-            <input type="password" name="password" id="password" placeholder="Entrez votre mot de passe" required>
-
-            <button type="submit">Se connecter</button>
-        </form>
-
-        <p>Pas encore inscrit ? <a href="register.php">Créez un compte</a></p>
-    </section>
-</main>
-
-<?php
-require 'includes/footer.php';
-?>
+    <a href="register.php" class="register-link">Pas de compte ? Créez-en un ici.</a>
+</div>
+</body>
+</html>

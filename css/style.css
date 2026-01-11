@@ -556,3 +556,8 @@ header nav ul li a:hover {
     margin-top: -20px;     /* monte le texte */
     margin-bottom: 20px;
 }
+
+.autocomplete-list li.active {
+    background-color: #333;
+    color: white;
+}
