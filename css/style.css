@@ -1,188 +1,208 @@
-/* ===== RESET ===== */
+/* ==========================================
+   RESET CSS
+   Réinitialise les marges, paddings et box-sizing
+   pour avoir une base propre sur tous les navigateurs
+========================================== */
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-  }
-  
-  body {
-    font-family: 'Roboto', sans-serif;
-    background-color: #0b0f17; /* bleu foncé */
-    color: #e0e0e0;
-    line-height: 1.6;
-  }
-  
-
-  /* ===== HEADER ===== */
-  header {
-    background-color: #0d141f; /* bleu foncé */
-    padding: 15px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  header h1 {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 1.8rem;
-    color: #3cb371; /* vert sombre */
-  }
-  
-  nav ul {
-    list-style: none;
-    display: flex;
-    gap: 20px;
-  }
-  
-  nav a {
-    color: #e0e0e0;
-    text-decoration: none;
-    font-weight: bold;
-  }
-  
-  nav a:hover {
-    color: #ff4500; /* rouge sang */
-  }
-  
-
-
-/* =========================
-          HERO 
-========================= */
-
-.hero {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-
-    text-align: center;
-    padding: 60px 20px;
-    min-height: 90vh; /* Augmenté pour que l'image descende plus bas */
-
-    /* Gestion de l'image de fond */
-    background-size: cover;      /* L'image couvre toute la section */
-    background-position: center; /* Centre l'image */
-    background-repeat: no-repeat;
+    box-sizing: border-box; /* Inclut padding et border dans width/height */
 }
 
-/* TITRE PRINCIPAL */
+/* ==========================================
+   BODY - Configuration générale du site
+========================================== */
+body {
+    font-family: 'Roboto', sans-serif; /* Police principale */
+    background-color: #0b0f17; /* Bleu foncé - couleur de fond principale */
+    color: #e0e0e0; /* Texte clair pour contraste */
+    line-height: 1.6; /* Espacement des lignes pour meilleure lisibilité */
+}
+
+/* ==========================================
+   HEADER - En-tête du site
+========================================== */
+header {
+    background-color: #0d141f; /* Bleu foncé légèrement différent du body */
+    padding: 15px 20px;
+    display: flex; /* Flexbox pour aligner logo et navigation */
+    justify-content: space-between; /* Espace entre logo et menu */
+    align-items: center; /* Centre verticalement les éléments */
+}
+
+/* Titre principal du header (logo) */
+header h1 {
+    font-family: 'Montserrat', sans-serif; /* Police distinctive pour le titre */
+    font-size: 1.8rem;
+    color: #3cb371; /* Vert sombre - couleur signature du site */
+}
+
+/* Liste de navigation */
+nav ul {
+    list-style: none; /* Supprime les puces */
+    display: flex; /* Affiche les liens horizontalement */
+    gap: 20px; /* Espace entre chaque lien */
+}
+
+/* Liens de navigation */
+nav a {
+    color: #e0e0e0; /* Texte clair */
+    text-decoration: none; /* Supprime le soulignement */
+    font-weight: bold;
+}
+
+/* Effet au survol des liens */
+nav a:hover {
+    color: #ff4500; /* Rouge sang - couleur d'accent */
+}
+
+/* ==========================================
+   HERO - Section principale de chaque page
+   Utilisée comme bannière en haut de page
+========================================== */
+.hero {
+    position: relative; /* Permet le positionnement des éléments enfants */
+    display: flex;
+    flex-direction: column; /* Empile les éléments verticalement */
+    align-items: center; /* Centre horizontalement */
+    justify-content: center; /* Centre verticalement */
+    text-align: center;
+    padding: 60px 20px;
+    min-height: 90vh; /* Prend presque toute la hauteur de l'écran */
+
+    /* Gestion de l'image de fond */
+    background-size: cover; /* L'image couvre toute la section */
+    background-position: center; /* Centre l'image */
+    background-repeat: no-repeat; /* Évite la répétition */
+}
+
+/* Titre principal dans le hero */
 .hero h1 {
     font-family: 'Montserrat', sans-serif;
     font-size: 2.5rem;
     margin-bottom: 10px;
-
-    color: #d12323;
-    text-shadow: 2px 2px 5px #c2aeae;
+    color: #e91109e7; /* Rouge vif */
+    text-shadow: 2px 2px 5px #e9d311; /* Ombre jaune pour effet lumineux */
 }
 
-
+/* Paragraphe et notes dans le hero */
 .hero p, .note {
-  color: #c5c5c5;
-  font-size: 1.2rem;
-  margin-bottom: 30px;
-  text-shadow: 1px 1px 3px #000;
+    color: #c5c5c5; /* Gris clair */
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    text-shadow: 1px 1px 3px #000; /* Ombre noire pour lisibilité */
 }
 
-
-/* BOUTON / LIEN */
+/* Bouton/Lien dans le hero */
 .hero a {
-    background-color: #ff4500;
-    color: #0b0f17;
+    background-color: #ff4500; /* Orange/rouge vif */
+    color: #0b0f17; /* Texte sombre pour contraste */
     padding: 12px 25px;
-
     border-radius: 5px;
     text-decoration: none;
     font-weight: bold;
-
-    transition: 0.3s;
+    transition: 0.3s; /* Animation fluide au survol */
 }
 
+/* Effet au survol du bouton */
 .hero a:hover {
-    background-color: #e91109;
+    background-color: #e91109; /* Rouge plus foncé */
 }
 
-/* 
-=========================
-   HERO - PREPARATION PAGE
-========================= */
-
+/* ==========================================
+   HERO - Version spéciale pour prep.php
+   Thème Warwick avec couleurs dorées
+========================================== */
 .hero.hero-prep {
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-
-    min-height: 90vh; /* pour que l'image descende plus bas */
+    min-height: 90vh;
 }
 
+/* Titre spécial prep avec couleur dorée */
 .hero.hero-prep h1 {
-  margin-top: -200px;
-  color: #f5d76e; /* doré */
-  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.6);
+    margin-top: -100px; /* Remonte le titre */
+    color: #f5d76e; /* Doré */
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.6);
 }
 
+/* Paragraphe prep avec couleur claire */
 .hero.hero-prep p {
-  margin-top: -20px;
-  color: #fff2c2;
-  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
+    margin-top: -20px;
+    color: #fff2c2; /* Jaune clair */
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
 }
 
+/* Note en bas du hero prep */
 .hero.hero-prep .note {
-    color: #f0b7a7;
+    color: #f0b7a7; /* Rose pâle */
     font-size: 0.95rem;
     margin-top: 15px;
 }
 
+/* Bouton hover effet doré */
 .hero.hero-prep a:hover {
     background-color: #fff2c2;
-    box-shadow: 0 0 18px rgba(245, 215, 110, 0.7);
+    box-shadow: 0 0 18px rgba(245, 215, 110, 0.7); /* Lueur dorée */
 }
 
-  
-  /* ===== SECTIONS ===== */
-  section {
+/* ==========================================
+   SECTIONS - Conteneurs de contenu
+========================================== */
+section {
     padding: 50px 20px;
-    max-width: 1200px;
-    margin: auto;
-  }
-  
-  section h3 {
+    max-width: 1200px; /* Limite la largeur sur grands écrans */
+    margin: auto; /* Centre la section */
+}
+
+/* Titres de section */
+section h3 {
     font-family: 'Montserrat', sans-serif;
     font-size: 2rem;
     margin-bottom: 20px;
-    color: #3cb371; /* vert sombre */
+    color: #3cb371; /* Vert sombre */
     text-align: center;
-  }
-  
-  .features {
+}
+
+/* ==========================================
+   FEATURES - Grille de cartes de fonctionnalités
+========================================== */
+.features {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-  }
-  
-  .feature-card {
-    background-color: #0d141f; /* bleu foncé */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Grille responsive */
+    gap: 20px; /* Espace entre les cartes */
+}
+
+/* Carte individuelle de fonctionnalité */
+.feature-card {
+    background-color: #0d141f; /* Bleu foncé */
     padding: 20px;
     border-radius: 10px;
     text-align: center;
-    transition: transform 0.3s;
-  }
-  
-  .feature-card:hover {
-    transform: translateY(-5px);
-  }
-  
-  .feature-card img {
+    transition: transform 0.3s; /* Animation au survol */
+}
+
+/* Effet de levée au survol */
+.feature-card:hover {
+    transform: translateY(-5px); /* Monte de 5px */
+}
+
+/* Images dans les cartes */
+.feature-card img {
     max-width: 100px;
     margin-bottom: 15px;
-  }
-  
-  .feature-card p {
+}
+
+/* Texte dans les cartes */
+.feature-card p {
     font-size: 1rem;
-  }
-  
-  /* ===== VIDEO ===== */
+}
+
+
+/* ==========================================
+   MEDIA - Vidéo
+========================================== */
   
   .video-container {
     position: relative;
@@ -204,235 +224,302 @@
     border: none; /* supprime la bordure de l'iframe */
     border-radius: 12px; /* pour que l'iframe respecte les coins arrondis */
   }
-  
+/* ==========================================
+   FOOTER - Pied de page
+========================================== */
+footer {
+    background-color: #0d141f;
+    padding: 20px;
+    text-align: center;
+    margin-top: 50px;
+    font-size: 0.9rem;
+    color: #aaa; /* Gris clair */
+}
 
-/* ===========================
-   Prep.php Styles - Warwick Theme
-=========================== */
+/* Liens dans le footer */
+footer a {
+    color: #3cb371; /* Vert sombre */
+    text-decoration: none;
+}
 
+/* Souligne au survol */
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* ==========================================
+   AUTOCOMPLETION - Liste de suggestions
+   Pour la recherche de champions
+========================================== */
 .autocomplete-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  max-height: 150px;
-  overflow-y: auto;
-  background-color: #0d141f;
-  border: none;
-  border-radius: 6px;
-  position: absolute;
-  width: 200px;
-  z-index: 10;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    max-height: 150px;
+    overflow-y: auto; /* Scroll si trop d'éléments */
+    background-color: #0d141f;
+    border: none;
+    border-radius: 6px;
+    position: absolute; /* Positionné au-dessus du formulaire */
+    width: 200px;
+    z-index: 10; /* Au-dessus des autres éléments */
 }
 
+/* Item individuel de la liste */
 .autocomplete-list li {
-  padding: 8px 12px;
-  cursor: pointer;
-  color: #e0e0e0;
+    padding: 8px 12px;
+    cursor: pointer; /* Indique que c'est cliquable */
+    color: #e0e0e0;
 }
 
+/* Effet au survol d'un item */
 .autocomplete-list li:hover {
-  background-color: #07111c;
-  color: #71b77a;
+    background-color: #07111c; /* Bleu plus foncé */
+    color: #71b77a; /* Vert clair */
 }
 
+/* Item actif (sélection au clavier) */
+.autocomplete-list li.active {
+    background-color: #333;
+    color: white;
+}
 
+/* ==========================================
+   PREP PAGE - Page de préparation des matchups
+========================================== */
 .prep-page {
-  font-family: 'Roboto', sans-serif;
-  color: #e0e0e0;
-  background: linear-gradient(135deg, #0b0f17, #081019);
-  padding: 20px;
-  min-height: 100vh;
+    font-family: 'Roboto', sans-serif;
+    color: #e0e0e0;
+    background: linear-gradient(135deg, #0b0f17, #081019); /* Dégradé de bleu */
+    padding: 20px;
+    min-height: 100vh;
 }
 
+/* Hero dans la prep page */
 .hero {
-  text-align: center;
-  padding: 40px 20px;
-  background-color: #0d141f;
-  border-radius: 12px;
-  margin-bottom: 30px;
-  box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    text-align: center;
+    padding: 40px 20px;
+    background-color: #0d141f;
+    border-radius: 12px;
+    margin-bottom: 30px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5); /* Ombre pour profondeur */
 }
 
-
+/* Note en italique */
 .note {
-  font-style: italic;
-  font-size: 0.9rem;
-  margin-top: 10px;
+    font-style: italic;
+    font-size: 0.9rem;
+    margin-top: 10px;
 }
 
-.champion-selection {   
-    position: absolute;                /* positionnée par rapport au parent relatif */
-    top: 90%;                          /* distance depuis le haut du hero, ajuste selon besoin */
-    left: 50%;                         /* centre horizontalement */
-    transform: translate(-50%, -50%);  /* recentre parfaitement */
-    z-index: 20;                       /* au-dessus du hero */
-    width: 90%;                        /* largeur responsive */
-    max-width: 750px;                  /* largeur max */
+/* ==========================================
+   CHAMPION SELECTION - Formulaire de recherche
+   Positionné par-dessus le hero
+========================================== */
+.champion-selection {
+    position: absolute; /* Positionné par rapport au hero (parent) */
+    top: 90%; /* 70% depuis le haut du hero */
+    left: 50%; /* Centre horizontalement */
+    transform: translate(-50%, -50%); /* Recentre parfaitement */
+    z-index: 20; /* Au-dessus du hero */
+    width: 90%; /* Largeur responsive */
+    max-width: 750px; /* Largeur maximale */
 }
 
-/* Formulaire */
+/* ==========================================
+   FORMULAIRE DE RECHERCHE
+========================================== */
 .champion-form {
     display: flex;
-    flex-direction: row; /* <-- important ! pour que les deux champs soient côte à côte */
-    gap: 20px;           /* espace entre les champs */
-    justify-content: center; 
-    background-color: rgba(13, 20, 31, 0.85); 
+    flex-direction: row; /* Les champs sont côte à côte */
+    gap: 20px; /* Espace entre les champs */
+    justify-content: center;
+    background-color: rgba(13, 20, 31, 0.85); /* Fond semi-transparent */
     padding: 20px 25px;
     border-radius: 12px;
     box-shadow: 0 0 15px rgba(0,0,0,0.6);
-    flex-wrap: wrap;      /* pour mobile, passe en colonne si espace insuffisant */
+    flex-wrap: wrap; /* Passe en colonne sur petits écrans */
 }
 
-/* Label */
+/* Labels des champs */
 .champion-form label {
     margin-bottom: 10px;
-    color: #f5d76e;  /* doré */
+    color: #f5d76e; /* Doré */
     font-weight: bold;
     text-align: center;
     font-size: 1.1rem;
 }
 
+/* Menus déroulants (select) */
 .champion-form select {
-  padding: 10px;
-  font-size: 1rem;
-  border-radius: 8px;
-  border: none;
-  margin-bottom: 15px;
-  background-color: #081019;
-  color: #e0e0e0;
+    padding: 10px;
+    font-size: 1rem;
+    border-radius: 8px;
+    border: none;
+    margin-bottom: 15px;
+    background-color: #081019;
+    color: #e0e0e0;
 }
 
+/* Bouton de soumission */
 .champion-form button {
-  padding: 10px 20px;
-  font-size: 1rem;
-  font-weight: bold;
-  color: #fff;
-  background-color: #b34747; /* rouge Warwick */
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: 0.3s;
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #fff;
+    background-color: #b34747; /* Rouge Warwick */
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
 }
 
+/* Effet au survol du bouton */
 .champion-form button:hover {
-  background-color: #1720a0;
+    background-color: #1720a0; /* Bleu au survol */
 }
 
+/* ==========================================
+   MATCHUP DISPLAY - Affichage des résultats
+========================================== */
 .matchup-display {
-  max-width: 900px;
-  margin: -65px auto -50px;
+    max-width: 900px;
+    margin: -65px auto -50px; /* Marges négatives pour remonter */
 }
 
+/* Titre de la section matchup */
 .matchup-display h2 {
-  color: #c94f3d;
-  margin-bottom: 20px;
-  text-align: center;
+    color: #c94f3d; /* Rouge */
+    margin-bottom: 20px;
+    text-align: center;
 }
 
+/* ==========================================
+   MATCHUPS CONTAINER - Grille de matchups
+========================================== */
 .matchups-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
-
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Grille responsive */
+    gap: 20px;
 }
 
+/* Carte individuelle de matchup */
 .matchup {
-  background-color: #0d141f;
-  padding: 15px;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.4);
-  transition: transform 0.3s;
+    background-color: #0d141f;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.4);
+    transition: transform 0.3s;
 }
 
+/* Effet de levée au survol */
 .matchup:hover {
-  transform: translateY(-5px);
+    transform: translateY(-5px);
 }
 
+/* Titre du matchup */
 .matchup h3 {
-  color: #71b77a;
-  margin-bottom: 5px;
+    color: #71b77a; /* Vert clair */
+    margin-bottom: 5px;
 }
 
+/* Description du matchup */
 .matchup p {
-  font-size: 0.9rem;
-  color: #c5c5c5;
+    font-size: 0.9rem;
+    color: #c5c5c5;
 }
 
+/* ==========================================
+   MATCHUP DETAILS - Détails du matchup
+========================================== */
 .matchup-details {
     margin-top: 30px;
     display: grid;
     gap: 20px;
 }
 
+/* Carte de détail individuelle */
 .matchup-card {
     background: rgba(13, 20, 31, 0.95);
     padding: 20px;
     border-radius: 12px;
-    border-left: 4px solid #f5d76e;
+    border-left: 4px solid #f5d76e; /* Bordure dorée à gauche */
 }
 
+/* Titre de la carte */
 .matchup-card h3 {
     margin-bottom: 10px;
-    color: #f5d76e;
+    color: #f5d76e; /* Doré */
 }
 
+/* Listes dans les cartes */
 .matchup-card ul {
     padding-left: 20px;
 }
 
+/* Items de liste */
 .matchup-card li {
     margin-bottom: 6px;
 }
 
+/* Carte spéciale pour le résumé */
 .matchup-card.summary {
-    background: linear-gradient(135deg, #1a1f2b, #0d141f);
-    border-left-color: #71b77a;
+    background: linear-gradient(135deg, #1a1f2b, #0d141f); /* Dégradé */
+    border-left-color: #71b77a; /* Bordure verte */
 }
 
-
-/*Header*/
+/* ==========================================
+   HEADER - Styles supplémentaires
+========================================== */
 header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #0d141f;
-  padding: 15px 30px;
-  border-bottom: 2px solid #71b77a;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #0d141f;
+    padding: 15px 30px;
+    border-bottom: 2px solid #71b77a; /* Bordure verte en bas */
 }
 
+/* Logo cliquable */
 header .logo a {
-  color: #71b77a;
-  text-decoration: none;
-  font-size: 1.8rem;
-  font-weight: bold;
+    color: #71b77a;
+    text-decoration: none;
+    font-size: 1.8rem;
+    font-weight: bold;
 }
 
+/* Liste de navigation */
 header nav ul {
-  list-style: none;
-  display: flex;
-  gap: 20px;
+    list-style: none;
+    display: flex;
+    gap: 20px;
 }
 
+/* Liens de navigation */
 header nav ul li a {
-  color: #e0e0e0;
-  text-decoration: none;
-  font-weight: 500;
-  transition: 0.3s;
+    color: #e0e0e0;
+    text-decoration: none;
+    font-weight: 500;
+    transition: 0.3s;
 }
 
+/* Effet au survol */
 header nav ul li a:hover {
-  color: #b34747;
+    color: #b34747; /* Rouge Warwick */
 }
 
-
+/* ==========================================
+   SEARCH WRAPPER - Conteneur de recherche
+========================================== */
 .search-wrapper {
-    position: relative;
+    position: relative; /* Pour positionner le bouton à l'intérieur */
     width: 100%;
 }
 
+/* Champ de recherche */
 .search-wrapper input {
     width: 100%;
-    padding: 12px 40px 12px 12px;
+    padding: 12px 40px 12px 12px; /* Espace à droite pour le bouton */
     border-radius: 8px;
     border: none;
     outline: none;
@@ -441,96 +528,103 @@ header nav ul li a:hover {
     color: #e0e0e0;
 }
 
+/* Suppression des styles par défaut */
+.search-wrapper input {
+    width: 100%;
+    padding: 12px 40px 12px 12px;
+    border-radius: 5px;
+    border: none; /* Supprime la bordure */
+    outline: none; /* Supprime le contour au focus */
+    box-shadow: none; /* Supprime l'ombre */
+    font-size: 1rem;
+    background-color: #081019;
+    color: #e0e0e0;
+}
+
+/* Bouton de recherche (loupe) */
 .search-wrapper .search-btn {
-    position: absolute;
+    position: absolute; /* Positionné dans le champ */
     right: 0px;
     top: 72%;
-    transform: translateY(-50%);
+    transform: translateY(-50%); /* Centre verticalement */
     background: transparent;
     border: none;
     font-size: 1.2rem;
-    color: #f5d76e; /* jaune doré */
+    color: #f5d76e; /* Jaune doré */
     cursor: pointer;
-
-        /* AJOUTS POUR AGRANDIR LA ZONE */
-    width: 35px;         /* largeur de la zone cliquable */
-    height: 35px;        /* hauteur de la zone cliquable */
+    
+    /* Zone cliquable agrandie */
+    width: 35px;
+    height: 35px;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0;     
+    padding: 0;
 }
 
-.search-wrapper input {
-    width: 100%;
-    padding: 12px 40px 12px 12px; /* espace pour la loupe */
-    border-radius: 5px;
-    border: none;          /* <-- supprime la ligne verte */
-    outline: none;         /* <-- supprime le contour focus par défaut */
-    box-shadow: none;      /* <-- supprime tout effet de shadow par défaut */
-    font-size: 1rem;
-    background-color: #081019; /* fond assorti à ton thème */
-    color: #e0e0e0;            /* texte clair */
-}
-
+/* Effet au survol du bouton */
 .search-wrapper .search-btn:hover {
-    color: #fff2c2;
+    color: #fff2c2; /* Jaune plus clair */
 }
 
-
-.dual-search-wrapper label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: bold;
-    color: #f5d76e; /* doré */
-    text-align: center;
-}
+/* ==========================================
+   DUAL SEARCH WRAPPER - Double recherche
+   Pour rechercher 2 champions simultanément
+========================================== */
 .dual-search-wrapper {
     display: grid;
     grid-template-columns: 4fr 4fr; /* 2 colonnes égales */
     gap: 50px;
-    justify-items: center;
+    justify-items: center; /* Centre les items */
     width: 100%;
 }
 
-/* Chaque champ */
+/* Labels des champs doubles */
+.dual-search-wrapper label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #f5d76e; /* Doré */
+    text-align: center;
+}
+
+/* Chaque champ de recherche */
 .dual-search-wrapper .search-wrapper {
     width: 100%;
     max-width: 260px;
 }
 
+/* ==========================================
+   MATCHUP ERROR - Message d'erreur
+========================================== */
 .matchup-error {
-    color: #e53935;              /* Rouge lisible */
-    text-align: center;          /* Centré */
-    font-size: 1.1rem;           /* Un peu plus gros */
-    font-weight: 600;            /* Semi-gras */
-
-    margin-top: -20px;     /* monte le texte */
+    color: #e53935; /* Rouge vif */
+    text-align: center;
+    font-size: 1.1rem;
+    font-weight: 600; /* Semi-gras */
+    margin-top: -20px; /* Remonte le message */
     margin-bottom: 20px;
 }
 
-.autocomplete-list li.active {
-    background-color: #333;
-    color: white;
-}
-
-
-/*test pour l'instant (barre de recherche)*/
-
+/* ==========================================
+   DASHBOARD CARD - Carte du dashboard
+========================================== */
 .dashboard-card.center {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
+/* Petit wrapper de recherche */
 .search-wrapper.small {
     width: 320px;
     position: relative;
 }
 
+/* Liste d'autocomplétion (alternative) */
 .autocomplete-list {
     position: absolute;
-    top: 100%;
+    top: 100%; /* En dessous du champ */
     left: 0;
     right: 0;
     background: #111;
@@ -540,16 +634,21 @@ header nav ul li a:hover {
     overflow-y: auto;
 }
 
+/* Items de la liste */
 .autocomplete-list li {
     padding: 8px;
     cursor: pointer;
 }
 
+/* Items actifs ou survolés */
 .autocomplete-list li.active,
 .autocomplete-list li:hover {
     background: #444;
 }
 
+/* ==========================================
+   DASHBOARD HERO - Hero du dashboard
+========================================== */
 .hero.dashboard-hero {
     position: relative;
     display: flex;
@@ -563,5 +662,195 @@ header nav ul li a:hover {
     background-size: cover;
     background-repeat: no-repeat;
     color: #fff;
-    text-shadow: 0 2px 6px rgba(0,0,0,0.6);
+    text-shadow: 0 2px 6px rgba(0,0,0,0.6); /* Ombre pour lisibilité */
+}
+
+/* ==========================================
+   PAGE DE CONNEXION ET INSCRIPTION
+========================================== */
+
+/* Body pour la page de connexion */
+body.login-page {
+    font-family: 'Roboto', sans-serif;
+    background-image: url('../media/img/TOP_1.jpg'); /* Image de fond */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed; /* Image fixe au scroll */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+}
+
+/* Body pour la page d'inscription */
+body.register-page {
+    font-family: 'Roboto', sans-serif;
+    background-image: url('../media/img/TOP_2.jpg'); /* Image différente */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+}
+
+/* Overlay sombre pour améliorer la lisibilité du texte */
+body.login-page::before,
+body.register-page::before {
+    content: ''; /* Pseudo-élément vide */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(11, 15, 23, 0.75); /* Voile noir semi-transparent */
+    z-index: 0; /* Derrière le contenu */
+}
+
+/* Conteneurs de connexion et inscription */
+.login-container,
+.register-container {
+    position: relative;
+    z-index: 1; /* Au-dessus de l'overlay */
+    background: rgba(13, 20, 31, 0.95); /* Fond semi-transparent */
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6); /* Ombre portée */
+    width: 100%;
+    max-width: 420px;
+    border: 2px solid rgba(60, 179, 113, 0.3); /* Bordure verte subtile */
+    backdrop-filter: blur(10px); /* Effet de flou sur l'arrière-plan */
+}
+
+/* Titres des formulaires */
+.login-container h2,
+.register-container h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #3cb371; /* Vert signature */
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Ombre pour profondeur */
+}
+
+/* Champs de formulaire (text, email, password) */
+.login-container input[type=text], 
+.login-container input[type=email], 
+.login-container input[type=password],
+.register-container input[type=text], 
+.register-container input[type=email], 
+.register-container input[type=password] {
+    width: 100%;
+    padding: 14px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    border: 2px solid rgba(60, 179, 113, 0.3); /* Bordure verte subtile */
+    box-sizing: border-box;
+    background-color: rgba(8, 16, 25, 0.8); /* Fond sombre */
+    color: #e0e0e0; /* Texte clair */
+    font-size: 1rem;
+    transition: all 0.3s; /* Animation fluide */
+}
+
+/* État focus des champs (quand on clique dedans) */
+.login-container input[type=text]:focus, 
+.login-container input[type=email]:focus, 
+.login-container input[type=password]:focus,
+.register-container input[type=text]:focus, 
+.register-container input[type=email]:focus, 
+.register-container input[type=password]:focus {
+    outline: none; /* Supprime le contour bleu par défaut */
+    border-color: #3cb371; /* Bordure verte vive */
+    box-shadow: 0 0 10px rgba(60, 179, 113, 0.4); /* Lueur verte */
+}
+
+/* Placeholder (texte d'aide dans les champs) */
+.login-container input::placeholder,
+.register-container input::placeholder {
+    color: #888; /* Gris moyen */
+}
+
+/* Boutons de soumission */
+.login-container button,
+.register-container button {
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(135deg, #3cb371, #2e8b57); /* Dégradé vert */
+    border: none;
+    color: #fff; /* Texte blanc */
+    font-size: 1.1rem;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-transform: uppercase; /* Texte en majuscules */
+    letter-spacing: 1px; /* Espacement des lettres */
+}
+
+/* Effet au survol des boutons */
+.login-container button:hover,
+.register-container button:hover {
+    background: linear-gradient(135deg, #2e8b57, #3cb371); /* Inverse le dégradé */
+    transform: translateY(-2px); /* Lève légèrement le bouton */
+    box-shadow: 0 6px 20px rgba(60, 179, 113, 0.4); /* Ombre verte */
+}
+
+/* Messages d'erreur */
+.error {
+    color: #ff6b6b; /* Rouge vif */
+    background-color: rgba(255, 107, 107, 0.15); /* Fond rouge transparent */
+    padding: 12px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    border-left: 4px solid #ff6b6b; /* Barre rouge à gauche */
+    font-size: 0.95rem;
+}
+
+/* Messages de succès */
+.success {
+    color: #51cf66; /* Vert vif */
+    background-color: rgba(81, 207, 102, 0.15); /* Fond vert transparent */
+    padding: 12px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    border-left: 4px solid #51cf66; /* Barre verte à gauche */
+    font-size: 0.95rem;
+}
+
+/* Liens dans les messages de succès */
+.success a {
+    color: #3cb371; /* Vert signature */
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+/* Effet au survol des liens de succès */
+.success a:hover {
+    color: #2e8b57; /* Vert plus foncé */
+}
+
+/* Liens "Créer un compte" et "Se connecter" */
+.register-link,
+.login-link {
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    color: #3cb371; /* Vert signature */
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+/* Effet au survol des liens */
+.register-link:hover,
+.login-link:hover {
+    color: #ff4500; /* Rouge sang */
+    text-decoration: underline;
 }

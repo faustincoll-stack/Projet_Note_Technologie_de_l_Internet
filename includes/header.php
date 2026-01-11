@@ -28,14 +28,14 @@ if (session_status() === PHP_SESSION_NONE) {
 <body>
     <header>
         <div class="logo">
-            <a href="accueil.php">LoL Top Lane Helper</a>
+            <a href="index.php">LoL Top Lane Helper</a>
         </div>
         <nav>
             <ul>
-                <li><a href="accueil.php">Accueil</a></li>
+                <li><a href="index.php">Accueil</a></li>
                 <li><a href="prep.php">Préparation Top Lane</a></li>
                 <?php if(isset($_SESSION['username'])): ?>
-                    <li><a href="dashboard.php">Dashboard</a></li>
+                    <li><a href="dashboard.php">Personalisation</a></li>
                     <li><a href="logout.php">Déconnexion</a></li>
                 <?php else: ?>
                     <li><a href="login.php">Connexion</a></li>

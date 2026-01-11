@@ -27,6 +27,7 @@ $stmt = $conn->prepare("SELECT username, favorite_top_champion FROM users WHERE 
 $stmt->execute([$username]);
 $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
+$pseudo=$user['username'];
 $currentChampion = $user['favorite_top_champion'] ?? '';
 $champ = $currentChampion ?: 'Warwick'; // par défaut
 ?>
@@ -35,7 +36,7 @@ $champ = $currentChampion ?: 'Warwick'; // par défaut
 
     <!-- HERO -->
     <section class="hero dashboard-hero" style="background-image: url('media/img/<?= htmlspecialchars($champ) ?>_3.jpg');">
-        <h1>Bienvenue sur votre Dashboard</h1>
+        <h1>Bienvenue <?= htmlspecialchars($pseudo) ?> sur votre menu de personalisation</h1>
         <p>Personnalisez votre champion favori et découvrez vos contenus sur mesure !</p>
     </section>
 

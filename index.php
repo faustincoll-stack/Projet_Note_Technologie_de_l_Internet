@@ -46,7 +46,7 @@ $champ = $favChampion ?: 'Warwick';
         <p>Affiche la difficulté des lanes et reçois des conseils stratégiques adaptés.</p>
       </div>
       <div class="feature-card">
-        <h4>Dashboard personnalisé</h4>
+        <h4>Personalisation du site</h4>
         <p>Suis tes champions favoris et retrouve tes derniers matchups préparés.</p>
       </div>
     </div>
@@ -68,6 +68,4 @@ $champ = $favChampion ?: 'Warwick';
   </footer>
 
 </body>
-
-
 </html>
