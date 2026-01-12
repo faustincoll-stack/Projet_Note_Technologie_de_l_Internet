@@ -854,3 +854,31 @@ body.register-page::before {
     color: #ff4500; /* Rouge sang */
     text-decoration: underline;
 }
+
+
+/* ==========================================
+   BOUTON RETOUR - Pages d'authentification
+   Pour login.php et register.php
+========================================== */
+.back-button-auth {
+    position: fixed; /* Fixé par rapport à la fenêtre */
+    top: 20px; /* 20px depuis le haut */
+    left: 20px; /* 20px depuis la gauche */
+    
+    /* Style identique au bouton "Commencer" */
+    background-color: #ff4500; /* Orange/rouge vif */
+    color: #0b0f17; /* Texte sombre pour contraste */
+    padding: 12px 25px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s; /* Animation fluide au survol */
+    
+    /* Assure que le bouton reste au-dessus de tout */
+    z-index: 100;
+}
+
+/* Effet au survol du bouton retour */
+.back-button-auth:hover {
+    background-color: #e91109; /* Rouge plus foncé */
+}

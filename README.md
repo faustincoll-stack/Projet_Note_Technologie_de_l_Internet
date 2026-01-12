@@ -35,7 +35,7 @@ This project was developed as part of an **academic web development project**, w
   - Recommended runes & items
   - Quick summary
 - Matchups are stored and retrieved from a SQL database
-- Many matchup are already save in the data base in the git but not all of them.
+- Many matchups are already saved in the database in the Git repository, but not all of them.
 
 ### Champion Autocomplete
 - Live search suggestions while typing
