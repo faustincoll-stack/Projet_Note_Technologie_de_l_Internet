@@ -2,11 +2,11 @@
 // Adresse du serveur de base de données (localhost = serveur local)
 $host = "127.0.0.1";
 // Nom de la base de données à utiliser
-$dbname = "matchups";
+$dbname = "e2301227";
 // Nom d'utilisateur pour se connecter à la base de données
-$user = "root";
+$user = "e2301227";
 // Mot de passe pour se connecter (vide par défaut en local)
-$pass = "";
+$pass = "Mxm524sm";
 
 // Bloc try : tente d'exécuter le code, capture les erreurs éventuelles
 try {
