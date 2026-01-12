@@ -2,11 +2,11 @@
 // Adresse du serveur de base de données (localhost = serveur local)
 $host = "127.0.0.1";
 // Nom de la base de données à utiliser
-$dbname = //numéro étudiant
+$dbname = "e2301227";
 // Nom d'utilisateur pour se connecter à la base de données
-$user = //numéro étudiant
+$user = "e2301227";
 // Mot de passe pour se connecter (vide par défaut en local)
-$pass = //mdp étudiant
+$pass = "Mxm524sm";
 
 // Bloc try : tente d'exécuter le code, capture les erreurs éventuelles
 try {

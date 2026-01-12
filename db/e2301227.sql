@@ -233,7 +233,7 @@ CREATE TABLE `users` (
   `favorite_top_champion` varchar(50) DEFAULT NULL,
   `last_Ennemie` varchar(100) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `last_play` varchar(50) NOT NULL
+  `last_play` varchar(50) NOT NULL DEFAULT '';
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
