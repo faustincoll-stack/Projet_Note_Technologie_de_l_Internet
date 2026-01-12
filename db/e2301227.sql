@@ -240,12 +240,6 @@ CREATE TABLE `users` (
 -- Déchargement des données de la table `users`
 --
 
-INSERT INTO `users` (`id`, `username`, `email`, `password`, `favorite_top_champion`, `last_Ennemie`, `created_at`, `last_play`) VALUES
-(1, 'test', 'test@gmail.com', '$2y$10$GhWb3lP8gJz9qn00w51/P.SIIR2QesJ.2uLDLh4cqmFOYwi2APXd2', 'Malphite', 'Garen', '2026-01-10 22:36:01', 'Warwick'),
-(2, 'test2', 'test2@gmail.com', '$2y$10$BULk9xsOkNI.hMcqBoyAgOYTwJ3j4lqR8PnSfX5APJt3VWZ7HlJ0W', 'Darius', 'Fiora', '2026-01-11 00:27:23', ''),
-(3, 'test1', 'test1@gmail.com', '$2y$10$ZlCYiqwAnEwY52w9IEYEtuEOlniE32txcljD9page6hM.XtpUOE8S', NULL, NULL, '2026-01-11 10:04:13', ''),
-(4, 'Julune', 'nul@gmail.com', '$2y$10$Z7x.2IoxatCyewRa6fTd5ethijB.32o6GeZ8sz6UTbeiKppa3C9la', 'Warwick', NULL, '2026-01-11 16:29:51', '');
-
 --
 -- Index pour les tables déchargées
 --

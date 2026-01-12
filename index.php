@@ -98,6 +98,12 @@ $champ = $favChampion ?: 'Warwick';
     </div>
   </section>
 
+<!-- AUDIO PLAYER -->
+<audio controls autoplay loop style="display: block; margin: 20px auto; width: 300px;">
+  <source src="media/audio/audio.mp3" type="audio/mpeg">
+  Votre navigateur ne supporte pas la lecture audio.
+</audio>
+
   <!-- FOOTER -->
   <!-- Pied de page du site -->
   <footer>
